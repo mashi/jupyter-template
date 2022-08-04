@@ -1,0 +1,120 @@
+repos:
+  - repo: https://github.com/psf/black
+    rev: 22.6.0
+    hooks:
+      - id: black
+
+  - repo: https://github.com/pycqa/isort
+    rev: 5.10.1
+    hooks:
+      - id: isort
+        args: ["--profile", "black", "--filter-files"]
+
+  - repo: https://github.com/PyCQA/docformatter
+    rev: v1.4
+    hooks:
+      # # line length compatible with black and flake8
+      - id: docformatter
+        args: [--wrap-summaries, "79", --in-place]
+
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.4
+    hooks:
+    - id: bandit
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.3.0  # Use the ref you want to point at
+    hooks:
+      # Prevent giant files from being committed.
+      - id: check-added-large-files
+        args: ['--maxkb=500']
+
+        # Simply check whether files parse as valid python.
+      - id: check-ast
+
+      # Attempts to load all json files to verify syntax.
+      - id: check-json
+
+      # Checks for symlinks which do not point to anything.
+      - id: check-symlinks
+
+      # Attempts to load all xml files to verify syntax.
+      - id: check-xml
+
+      # Attempts to load all yaml files to verify syntax.
+      - id: check-yaml
+
+      # Check for files that contain merge conflict strings.
+      - id: check-merge-conflict
+
+      # Attempts to load all TOML files to verify syntax.
+      - id: check-toml
+
+      # Check for debugger imports and py37+ breakpoint() calls in python source.
+      - id: debug-statements
+
+      # Detects symlinks which are changed to regular files with a content of a path which that symlink was pointing to.
+      - id: destroyed-symlinks
+
+      # Makes sure files end in a newline and only a newline.
+      - id: end-of-file-fixer
+
+      # Assert that files in tests/ start in test_*.py.
+      - id: name-tests-test
+        args: ['--django']
+
+      # Sorts entries in requirements.txt and removes incorrect entry for pkg-resources==0.0.0
+      - id: requirements-txt-fixer
+
+      # Trims trailing whitespace.
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v0.942
+    hooks:
+    -   id: mypy
+
+  # jupyter notebooks: clear output cells from the version control
+  - repo: local
+    hooks:
+      - id: jupyter-clear-output
+        name: jupyter-clear-output
+        files: \.ipynb$
+        stages: [commit]
+        language: system
+        entry: jupyter nbconvert --ClearOutputPreprocessor.enabled=True --inplace
+
+  # notebook checks
+  - repo: https://github.com/nbQA-dev/nbQA
+    rev: 1.3.1
+    hooks:
+    - id: nbqa-black
+      additional_dependencies: [black==22.3.0]
+    #  - id: nbqa-pyupgrade
+    #    additional_dependencies: [pyupgrade==2.7.3]
+    - id: nbqa-isort
+      additional_dependencies: [isort==5.10.1]
+    - id: nbqa-check-ast
+      additional_dependencies: [pre_commit_hooks==v4.1.0]
+
+      # custom hooks of nbqa
+      # code is adapted from:
+      # 1) nbQA/.pre-commit-hooks.yaml
+      # 2) entry points were taken from pre-commit-hooks/setup.cfg
+    - id: nbqa
+      name: nbqa-merge-conflict
+      description: "Run 'check_merge_conflict' on a Jupyter Notebook"
+      entry: nbqa pre_commit_hooks.check_merge_conflict
+      language: python
+      require_serial: true
+      types: [jupyter]
+      additional_dependencies: [pre_commit_hooks==v4.1.0]
+    - id: nbqa
+      name: nbqa-debug-statements
+      description: "Run 'debug-statements' on a Jupyter Notebook"
+      entry: nbqa pre_commit_hooks.debug_statement_hook
+      language: python
+      require_serial: true
+      types: [jupyter]
+      additional_dependencies: [pre_commit_hooks==v4.1.0]
