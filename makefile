@@ -1,6 +1,3 @@
-# Note that, to always execute a recipe, it is recommended [1] to use the FORCE prerequisite
-# [1] https://www.gnu.org/software/make/manual/html_node/Force-Targets.html
-
 SHELL := /bin/bash
 
 # install all the required packages and configure the git hooks
@@ -13,13 +10,3 @@ install:
 		pip install -r requirements.txt; \
 		pre-commit install; \
 	)
-
-# execute tests
-tests: FORCE
-	@(\
-		source .venv/bin/activate; \
-		python -m unittest discover -b; \
-	)
-
-
-FORCE:
