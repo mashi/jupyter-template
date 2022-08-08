@@ -12,6 +12,7 @@ install:
 		pip install wheel; \
 		pip install -r requirements.txt; \
 		pre-commit install; \
+		nbdime config-git --enable; \
 	)
 
 # execute tests
