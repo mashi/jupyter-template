@@ -1,3 +1,3 @@
 jupyterlab==4.0.9
-nbdime==3.2.1
+nbdime==4.0.1
 pre-commit==3.5.0
