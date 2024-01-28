@@ -1,14 +1,12 @@
 repos:
-  - repo: https://github.com/psf/black
-    rev: 23.12.1
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.14
     hooks:
-      - id: black
-
-  - repo: https://github.com/pycqa/isort
-    rev: 5.13.2
-    hooks:
-      - id: isort
-        args: ["--profile", "black", "--filter-files"]
+      # Run the linter.
+      - id: ruff
+        args: [ --fix ]
+      # Run the formatter.
+      - id: ruff-format
 
   - repo: https://github.com/PyCQA/docformatter
     rev: v1.7.5
@@ -89,13 +87,8 @@ repos:
   - repo: https://github.com/nbQA-dev/nbQA
     rev: 1.7.1
     hooks:
-    - id: nbqa-black
-      additional_dependencies: [black==22.6.0]
-    - id: nbqa-isort
-      additional_dependencies: [isort==5.10.1]
+    - id: nbqa-ruff
     - id: nbqa-check-ast
-      additional_dependencies: [pre_commit_hooks==v4.3.0]
-
       # custom hooks of nbqa
       # code is adapted from:
       # 1) nbQA/.pre-commit-hooks.yaml
