@@ -100,7 +100,7 @@ repos:
       language: python
       require_serial: true
       types: [jupyter]
-      additional_dependencies: [pre_commit_hooks==v4.3.0]
+      additional_dependencies: [pre_commit_hooks==4.6.0]
     - id: nbqa
       name: nbqa-debug-statements
       description: "Run 'debug-statements' on a Jupyter Notebook"
@@ -108,4 +108,4 @@ repos:
       language: python
       require_serial: true
       types: [jupyter]
-      additional_dependencies: [pre_commit_hooks==v4.3.0]
+      additional_dependencies: [pre_commit_hooks==4.6.0]
