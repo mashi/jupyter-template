@@ -63,4 +63,3 @@ This isn't just another folder with a `.ipynb` file. It's a complete development
     ```bash
     make tests
     ```
-
