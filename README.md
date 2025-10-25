@@ -33,7 +33,6 @@ This isn't just another folder with a `.ipynb` file. It's a complete development
 | **Ruff** | The fastest Python linter and formatter, ever. |
 | **nbQA** | Run code quality tools on Jupyter Notebooks. |
 | **MyPy** | Static type checking for robust code. |
-|
 | **Bandit** | Finds common security issues in Python code. |
 | **pre-commit** | A framework for managing and maintaining multi-language pre-commit hooks. |
 | **GitHub Actions** | CI/CD to automate your checks. |
