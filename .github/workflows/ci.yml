@@ -22,7 +22,7 @@ jobs:
         with:
           python-version: '3.13'
       - name: Install uv
-        uses: astral-sh/setup-uv@v6
+        uses: astral-sh/setup-uv@v7
         with:
           version: "0.9.14"
       - name: pre-commit checks
@@ -42,7 +42,7 @@ jobs:
         with:
           python-version: '3.13'
       - name: Install uv
-        uses: astral-sh/setup-uv@v6
+        uses: astral-sh/setup-uv@v7
         with:
           version: "0.9.14"
       - name: makefile recipes
