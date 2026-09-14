@@ -8,17 +8,14 @@ install:
 	@(\
 		uv venv; \
 		source .venv/bin/activate; \
-		uv pip install -r requirements.txt; \
+		uv sync; \
 		pre-commit install; \
 		nbdime config-git --enable; \
 	)
 
 # execute tests
 tests: FORCE
-	@(\
-		source .venv/bin/activate; \
-		python -m jupyter nbconvert src\/*.ipynb --ClearOutputPreprocessor.enabled=True --inplace; \
-	)
+		uv run jupyter nbconvert src\/*.ipynb --ClearOutputPreprocessor.enabled=True --inplace
 
 
 FORCE:
