@@ -1,3 +1,19 @@
+[project]
+name = "sample"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = []
+requires-python = ">=3.14"
+dependencies = [
+    "jupyterlab==4.6.3",
+    "pre-commit>=4.6.2",
+    "nbdime==4.0.4",
+]
+
+[tool.uv]
+package = false
+
 [tool.ruff]
 # Exclude a variety of commonly ignored directories.
 exclude = [
@@ -60,3 +76,8 @@ skip-magic-trailing-comma = false
 
 # Like Black, automatically detect the appropriate line ending.
 line-ending = "auto"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.16.7",
+]
