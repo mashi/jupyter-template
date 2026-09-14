@@ -6,11 +6,16 @@
   "pre-commit": {
     "enabled": true
   },
-  "pip_requirements": {
-    "fileMatch": ["requirements$"]
+  "pep621": {
+    "enabled": true
+  },
+  "lockFileMaintenance": {
+    "enabled": true
   },
   "github-actions": {
-    "fileMatch": [".github/workflows/"]
+    "fileMatch": [
+      ".github/workflows/"
+    ]
   },
   "dependencyDashboard": true,
   "branchConcurrentLimit": 50,
