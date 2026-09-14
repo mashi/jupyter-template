@@ -27,7 +27,7 @@ jobs:
       - name: pre-commit checks
         run: |
           uv sync --dev
-          pre-commit run --all-files
+          uv run pre-commit run --all-files
 
   # check if the makefile recipes are valid
   makefile:
