@@ -15,7 +15,7 @@ on:
 
 jobs:
   pre-commit-checks:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v7
       - name: Install uv
@@ -32,7 +32,7 @@ jobs:
   # check if the makefile recipes are valid
   makefile:
     # needs: [test-and-build, docs] # commented because the serial execution slowed down the CI
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v7
       - name: Install uv
