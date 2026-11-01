@@ -6,7 +6,7 @@ readme = "README.md"
 authors = []
 requires-python = ">=3.14"
 dependencies = [
-    "jupyterlab==4.6.4",
+    "jupyterlab==4.6.5",
     "pre-commit>=4.6.2",
     "nbdime==4.0.4",
 ]
